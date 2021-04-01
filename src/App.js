@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route, Link } from "react-router-dom";
+import Home from "./pages/home/Home.jsx";
+import Info from "./pages/info/Info.jsx";
+import Contact from "./pages/contact/Contact.jsx";
+import Post from "./pages/post/Post.jsx";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/info">Info</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
       </header>
+      <div className="content">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/info" component={Info} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/:post_id" component={Post} />
+        </Switch>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
